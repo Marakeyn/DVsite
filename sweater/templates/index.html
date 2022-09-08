@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>D&V</title>
+{% endblock %}
+
+
+{% block body %}
+
+<main>
+  <section class="py-5 text-center container">
+    <div class="row py-md-2">
+      <div class="col-md-2 col-md-8 mx-auto">
+
+        <h1 class="fa-wine-glass" style="font-size: 50px; color: #efaf27">D&V Apartment</h1>
+        <p class="lead text-muted">Квартиры в Бобруйске ПО ВЫГОДНЫМ ЦЕНАМ.
+улица Максима Горького 43а, Бобруйск</p>
+        <p>
+
+        </p>
+         <hr>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+
+
+      <div class="row" >
+          {% for el in data%}
+            <div class="col-md-6 col-lg-4">
+
+              <div class="card md-6 box-shadow">
+
+                <img class="card-img-top" src='{{"static/img/" + el.id.__str__() +"/"+ el.files.split(",")[0]}}' data-holder-rendered="true">
+                <div class="card-body" style="background-color: rgba(134,134,134,0.05)">
+                  <h1>{{ el.title }}</h1>
+                  {% if el.description|length > 100 %}
+                  <p class="card-text">{{  el.description[:30] }}...</p>
+                  {% else %}
+                   <p class="card-text">{{  el.description }}</p>
+                  {% endif %}
+
+
+<!--                  <h1>{{ el.title }}</h1>-->
+<!--                  -->
+                  <div class="d-flex justify-content-between align-items-center">
+                    <a href="ad_{{ el.id }}"><button type="button" class="btn gold-btn-out" style="font-size: 18px">Узнать больше</button></a><span class="lead"><i class="bi bi-eye"></i> {{el.views}} </span>
+<!--                    <small class="text-muted">9 mins</small>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</main>
+    <div class="row">
+        <div class="col-8" id="about_div" style="background-color: rgba(241,215,176,0.22); margin-left: auto; margin-right: auto; font-size: 20px; text-align: left">
+            <p><h3 style="text-align: center">КВАРТИРЫ В БОБРУЙСКЕ</h3><br>
+            <hr style="width: 200px; margin: -20px auto 30px auto">
+Аренда квартир на любой вкус, 6-й микрорайон, центр. На сутки, часы...<br>
+Для командировочных на сутки, недели, месяцы, пакет документов.<br>
+Всегда есть свободные квартиры, быстрое заселение, в любое время.<br>
+Для постоянных клиентов специальные условия, бонусы. Трансфер из аэропорта и регистрация<br>
+            <h4 style="text-align: center">Контакты</h4>
+<i class="bi bi-telephone"></i><a href="tel:+375-44-744-08-05" style="outline: none; text-decoration: none"> 8 044 744-08-05</a>- Дарья<br>
+<i class="bi bi-telephone"></i><a href="tel:+375-29-149-27-98" style="outline: none; text-decoration: none"> 8 029 149-27-98</a>- Владислав<br>
+            <i class="bi bi-pin-fill"></i><a href="https://www.google.com/maps/dir//D%26V+Apartment/@53.1445049,29.1948457,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x46d731fb405772b9:0x7527ec926c2b2bb7!2m2!1d29.2312395!2d53.1449888" style="outline: none; text-decoration: none">Показать На карте</a><br><br>
+        </div>
+    </div>
+<script>
+    $('#about').onclick = function(){ // Проверяем загрузку
+        alert(1)
+        $('html, body').animate({
+                scrollTop: $('#about_div').offset().top // прокручиваем страницу к требуемому элементу
+            }, 500 // скорость прокрутки
+        );
+    }
+</script>
+{% endblock %}
+
+

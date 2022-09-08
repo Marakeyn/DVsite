@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>D&V</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold" >{{ data.title }}</h1><hr>
+                <h4 class="price_box" id="price_box" style="color: green; font-weight: bold; font-size: 2.2em" >{{ data.price }}</h4><p class="lead" id="usd_box" style="font-size: 1.5em"></p>
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height: 80%; width: 100%; padding: 1% 10%;background-color: rgba(255,166,0,0.72); margin: auto;">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      {% for i in range(data.files.split(",")[1:]|length) %}
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ (i+1)|string }}" aria-label="{{ 'Slide ' + (i+2)|string }}"></button>
+      {% endfor  %}
+  </div>
+  <div class="carousel-inner">
+      <div class="carousel-item active">
+      <img src="static/img/{{ data.id|string +'/'+ data.files.split(',')[0] }}" class="d-block w-100 scale" style="border-radius: 10px;">
+    </div>
+    {% for el in data.files.split(",")[1:] %}
+    <div class="carousel-item">
+      <img src="static/img/{{ data.id|string +'/'+ el }}" class="d-block w-100 scale" style="border-radius: 10px;">
+    </div>
+      {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Предыдущий</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Следующий</span>
+  </button>
+</div>
+
+                <p class="col-md-8 fs-4"><h3>Описание </h3><br> {{ data.description }}></p>
+            </div>
+                <a href="https://yandex.ru/maps/?text={{ data.city }}, {{ data.street }}, {{ data.houseNumber }}">
+                    <button class="btn btn-warning gold-btn-bck">Показать на карте</button>
+                        </a>
+                    <p class="link-secondary text-decoration-none">Может показать неверное положение дома</p>
+        </div>
+        </div>
+        <div class="container">
+        <div class="row align-items-md-stretch">
+            <div class="col-md-6">
+                <div class="h-100 p-5 gold-background text-white gold-background rounded-3">
+                    <h2>Информация</h2>
+                    {% set mas=[data.adType, data.totalArea, data.livingArea,
+                    data.kitchen, data.rooms, data.separate_rooms, data.floor,
+                    data.bathroom, data.balcony, data.repair]%}
+                    {%set masName=['Тип','Общая площадь','Жилая площадь','Кухня',
+                    'Количество комнат','Раздельных комнат ','Этаж','Санузел','Балкон',
+                    'Ремонт']%}
+                    {%set masArea=['','м²','м²','м²',
+                    '','','','','',
+                    '']%}<br>
+                    {% for i in range(mas|length)%}
+                        {% if mas[i]!='selected' or '' or none%}
+
+                    <span style="float: left; font-size: 18px">{{masName[i]}}</span><span style="float: right; font-size: 18px">{{mas[i]}} {{ masArea[i] }}</span><hr><br>
+
+                    {%endif%}
+
+
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-light border rounded-3" id="other_info">
+                    <h2>Дополнительно</h2>
+                    {% set mas2=[data.city, data.street, data.houseNumber,
+                    data.numberOfStoreys, data.wallMaterial, data.yearOfConstruction,
+                    data.yearOfOverhaul, data.adUser, data.adEmail]%}
+                    {%set masName2=['Город','Улица','Номер дома','Этажность дома',
+                    'Материалы стен','Год постройки дома','Год капитального ремонта',
+                    'Контактное лицо','Почта']%}<br>
+                    {% for i in range(mas2|length)%}
+                        {% if mas2[i]!='selected' and mas2[i]!='' and mas2[i]!=none%}
+
+                    <span style="float: left; font-size: 18px">{{masName2[i]}}</span><span style="float: right; font-size: 18px">{{mas2[i]}}</span><hr><br>
+
+                    {%endif%}
+
+                    {% endfor %}
+                    <button class="gold-btn-out" id="User_PhoneB" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Tooltip on right" onclick="Show_Phone('{{data.adPhone}}')">Показать номер телефона</button>
+                    <br><br><br>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,132 @@
+
+html {
+
+overflow-x: hidden;
+
+}
+
+body{
+    background-color: rgba(255, 255, 244, 0.93);
+    overflow-x: hidden;
+}
+
+div{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.def_hr{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #deac42;
+}
+
+.gold-background {background-color: #deac42;}
+.white {color:#ffffff;}
+.gold-border{border-color: #efaf27;}
+.gold-border:focus {border-color: #efaf27; box-shadow:#efaf27;}
+
+.gold-btn-bck{
+    color:#ffffff;
+    border-color: #efaf27;
+    background-color: #efaf27;
+}
+
+.gold-btn-bck:hover{
+    color:#ffffff;
+    border-color: #efaf27;
+    background-color: #ffbf4b;
+    transition: all .5s;
+}
+
+.gold-btn-out{
+    color: #efaf27;
+    border-radius: 5px;
+    border: 2px solid #efaf27;
+    padding: 5px;
+    font-size: 25px;
+    background-color: #ffffff;
+}
+
+.gold-btn-out:hover {
+    color: #ffffff;
+    border-color: #efaf27;
+    background-color: #ffbf4b;
+    transition: all .5s;
+}
+
+.select{
+    width: 100%;
+    outline: none;
+    padding: 6px;
+    border-color: #efaf27;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    transition: all .5s;
+}
+
+.select:focus{
+    box-shadow: 0 0 0 4px rgba(239, 175, 39, 0.8);
+    transition: all .5s;
+}
+
+.select:hover{
+    box-shadow: 0 0 0 2px rgba(239, 175, 39, 0.8);
+    transition: all .5s;
+}
+
+.input-class{
+    width: 100%;
+    outline: none;
+    padding: 6px;
+    color: #efaf27;
+    border-width: 1px;
+    font-size: 20px;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    background-color: #e7e7e7;
+    border-style: solid;
+    border-color: #efaf27;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    transition: all .5s;
+}
+
+.input-class:focus{
+    box-shadow: 0 0 0 2px rgba(239, 175, 39, 0.8);
+    transition: all .5s;
+    background-color: #fffbfb;
+}
+
+.input-class:hover{
+    box-shadow: 0 0 0 1px rgba(239, 175, 39, 0.8);
+    transition: all .5s;
+}
+
+.card{
+    max-width: 600px;
+}
+
+sm{
+    opacity: 50%;
+    font-size: 15px;
+}
+
+img{
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.scale{
+    transition: .5s;
+    overflow: scroll;
+}
+
+.scale:hover{
+    transform: scale(2);
+}
+
+label{
+    width: 100%;
+}

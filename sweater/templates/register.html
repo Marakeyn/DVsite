@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>Создание Объявления</title>
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="row align-items-center" style="padding: 100px">
+
+        <div class="col-3 col-md-5 col-lg-3 mx-auto"
+             style="border: 2px gray solid; border-radius: 10px; padding: 20px; box-shadow: 0 5px 5px grey;">
+            <h1>Регистрация</h1>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-warning" role="alert">
+                <ul class=flashes>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+                <label>Имя<br>
+                    <input class="input-class" type="text" name="name">
+                </label>
+                <label>Фамилия<br>
+                    <input class="input-class" type="text" name="surname">
+                </label>
+                <label>Номер телефона<br>
+                    <input class="input-class" type="text" name="phone">
+                </label>
+                <label>Эл. Почта<br>
+                    <input class="input-class" type="email" name="email">
+                </label>
+
+                <label>Пароль<br>
+                    <input class="input-class" type="password" name="password">
+                </label>
+                <label>Повторите пароль<br>
+                    <input class="input-class" type="password" name="password2">
+                </label>
+                <p class="link-secondary text-decoration-none">Если вы уже есть на сайте - <a href="{{ url_for('login_page') }}">Войти</a></p>
+
+                <br> <input class="btn btn-warning gold-btn-bck" type="submit" value="Регистрация">
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

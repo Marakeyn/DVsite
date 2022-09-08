@@ -1,0 +1,331 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>Создание Объявления</title>
+{% endblock %}
+
+
+{% block body %}
+
+<main>
+    <div class="py-5 text-center">
+        <h1>D&V</h1>
+        <h2>Создание Объявления</h2>
+        <p class="lead">Для подачи объявления нужно заполнить все обязательные поля.</p>
+    </div>
+    <div class="container">
+
+        <div class="row"
+             style="border: darkgrey 1px solid; border-radius: 5px; padding: 20px; padding-top: 40px; max-width: 1000px; margin: auto; box-shadow: 0 0 5px 5px rgba(128,128,128,0.58)">
+            <form method="post" enctype="multipart/form-data">
+                <h3>Тип объявления</h3>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6" style="margin: auto">
+                        <select class="select" name="adType" id="adType">
+                            <option value="Аренда">Аренда</option>
+                            <option value="Продажа">Продажа</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" style="margin: auto">
+                            <select class="select" name="roomType" id="roomType">
+                            <option value="Квартира">Квартира</option>
+                            <option value="Комната">Комната</option>
+                            <option value="Коттеджи/Дома">Коттеджи/Дома</option>
+                            <option value="Дача">Дача</option>
+                            <option value="Участок">Участок</option>
+                            <option value="Гараж">Гараж</option>
+                            <option value="Коммерческая недвижимость">Коммерческая недвижимость</option>
+                        </select>
+                    </div>
+                </div>
+                <hr class="def_hr">
+                <h3>Местоположение</h3>
+                <h5 class="lead">Адрес</h5><br><br>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <span>Город</span><br>
+                        <label>
+                            <input type="text" class="input-class" required name="city" id="city" >
+                        </label>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <span>Улица</span><br>
+                        <label>
+                            <input type="text" class="input-class" required name="street" id="street">
+                        </label>
+
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <span>Дом</span><br>
+                        <label>
+                            <input type="text" class="input-class" required name="houseNumber" id="houseNumber">
+                        </label>
+                    </div>
+                </div>
+                <br>
+                <hr class="def_hr">
+                <br>
+                <h3>Контактная информация</h3><br><br>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <span>Имя контактного лица</span><br>
+                        <label>
+                            <input type="text" class="input-class" required name="adUser" id="adUser">
+                        </label>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <span>E-mail</span><br>
+                        <label>
+                            <input type="email" class="input-class" name="adEmail" id="adEmail" required>
+                        </label>
+
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <span>Мобильный телефон</span><br>
+                        <label>
+                            <input id="tel_Input" type="tel" class="input-class col-lg-4 col-md-6"
+                                   placeholder="+375 (__) ___-__-__" required name="adPhone" id="adPhone">
+                        </label>
+                    </div>
+                </div>
+
+                <!--<a href=" https://yandex.ru/maps/?mode=search&text=Бобруйск улица комбинатская 263 б>">Поиск</a>
+                <a href="https://yandex.by/maps/org/d_v_apartment/66841044218/?ll=29.216262%2C53.147890&mode=search&sctx=ZAAAAAgBEAAaKAoSCft3feasNz1AEUvnw7MEk0pAEhIJda%2BT%2BrK0gz8RArovZ7YrhD8iBgABAgMEBSgKOABA%2BaEBSAFqAnVhnQHNzEw9oAEAqAEAvQGD%2B%2B%2FUwgEG%2BsmlgPkB6gEA8gEA%2BAEAggINRCZWIEFwYXJ0bWVudIoCAJICAJoCDGRlc2t0b3AtbWFwcw%3D%3D&sll=29.216262%2C53.147890&sspn=0.002473%2C0.002531&text=D%26V%20Apartment&z=18.04">Летний сад</a>
+               <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa0a40fc071849ab65d5feba89f55118964784fee6efa44439a5ab176a22c0440&amp;width=500&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>-->
+                <br>
+                <hr class="def_hr">
+                <br>
+                <div class="row">
+                    <h3>Параметры помещения</h3><br><br><br><br>
+                    <div class="col-6">
+
+                        <span>Количество комнат</span><br>
+                        <label>
+                            <input type="number" class="input-class" style="text-align: center;"
+                                   required name="rooms" id="rooms">
+                        </label>
+
+                    </div>
+                    <div class="col-6">
+
+                        <span>Кол-во отдельных комнат</span><br>
+                        <label>
+                            <input type="number" class="input-class" style="text-align: center;"
+                                   required name="separate_rooms" id="separate_rooms">
+                        </label>
+
+                    </div>
+                    <div class="row">
+                        <span>Площадь, м2</span><br>
+                        <div class="col-4">
+                            <label>
+                                <input type="number" class="input-class" style="text-align: center;"
+                                       placeholder="Общая" required name="totalArea" id="totalArea">
+                            </label>
+
+                        </div>
+
+                        <div class="col-4">
+                            <label>
+                                <input type="number" class="input-class" style="text-align: center;"
+                                       placeholder="Жилая" required name="livingArea" id="livingArea">
+                            </label>
+
+                        </div>
+
+                        <div class="col-4">
+                            <label>
+                                <input type="number" class="input-class" style="text-align: center;"
+                                       placeholder="Кухня" required id="kitchen" name="kitchen">
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span>Этаж</span>
+                        <div class="col-4">
+                            <label>
+                                <input type="number" class="input-class" style="text-align: center;"
+                                       required name="floor" id="floor">
+                            </label>
+
+                        </div>
+                        <div class="col-1" style="font-size: 25px">из</div>
+                        <div class="col-4">
+
+                            <label>
+                                <input type="number" class="input-class" style="text-align: center;"
+                                       required name="numberOfStoreys" id="numberOfStoreys">
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <span>Балкон <sm>(необязательно)</sm> </span><br>
+                        <div class="col-lg-4 col-md-6">
+                            <select class="select" aria-label="Default select example" name="balcony" id="balcony">
+                                <option value="selected"></option>
+                                <option value="Балкон">Балкон</option>
+                                <option value="Лоджия">Лоджия</option>
+                                <option value="Нет">Нет</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <span>Сан. узел <sm>(необязательно)</sm> </span><br>
+                        <div class="col-lg-4 col-md-6">
+                            <select class="select" aria-label="Default select example" name="bathroom" id="bathroom">
+                                <option value="selected"></option>
+                                <option value="Раздельный">Раздельный</option>
+                                <option value="Совмещенный">Совмещенный</option>
+                                <option value="2 сн.узла">2 сн.узла</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <span>Ремонт <sm>(необязательно)</sm> </span><br>
+                        <div class="col-lg-4 col-md-6">
+                            <select class="select" aria-label="Default select example" name="repair" id="repair">
+                                <option value="selected"></option>
+                                <option value="С отделкой">С отделкой</option>
+                                <option value="Без отделки">Без отделки</option>
+                                <option value="Черновая">Черновая</option>
+                                <option value="Отличный">Отличный</option>
+                                <option value="Хороший">Хороший</option>
+                                <option value="Удовлетворительный">Удовлетворительный</option>
+                                <option value="Косметический">Косметический</option>
+                                <option value="Евро">Евро</option>
+                                <option value="Дизайнерский">Дизайнерский</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="row">
+                    <h3> Параметры здания </h3><br><br><br><br>
+                    <span>Тип стен <sm>(необязательно)</sm> </span><br>
+                    <div class="col-lg-4 col-md-6">
+                        <select class="select" aria-label="Default select example" id="wallMaterial"
+                                name="wallMaterial">
+                            <option value="selected"></option>
+                            <option value="Панельный">Панельный</option>
+                            <option value="Монолитный">Монолитный</option>
+                            <option value="Кирпичный">Кирпичный</option>
+                            <option value="Каркасно-блочный">Каркасно-блочный</option>
+                            <option value="Силикатные блоки">Силикатные блоки</option>
+                            <option value="Бревенчатый">Бревенчатый</option>
+                            <option value="Блок-комнаты">Блок-комнаты</option>
+                        </select>
+                    </div>
+
+                    <span>Год постройки<sm>(необязательно)</sm> </span><br>
+                    <div class="col-lg-4 col-md-6">
+                        <label>
+                            <input type="number" class="input-class" id="yearOfConstruction" name="yearOfConstruction">
+                        </label>
+                    </div>
+
+                    <span>Год кап. ремонта<sm>(необязательно)</sm> </span><br>
+                    <div class="col-lg-4 col-md-6">
+                        <label>
+                            <input type="number" class="input-class" id="yearOfOverhaul" name="yearOfOverhaul">
+                        </label>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="row">
+                    <h3>Название и описание</h3><br><br><br><br>
+                    <span>Название объявления</span><br>
+                    <div class="col-12">
+                        <input type="text" class="input-class" style="width: 100%" name="title" id="title" required>
+                    </div>
+
+                    <span>Цена (BYN)</span><br>
+                    <div class="col-3">
+                        <label for="title"></label><input type="number" class="input-class" style="width: 100%"
+                                                          name="price" id="price" required>
+                    </div>
+
+                    <span>Описание</span><br>
+                    <label>
+<textarea maxlength="999" class="input-class" style="height: 200px; background-color: white" name="description" id="description" required>
+</textarea>
+                    </label>
+                </div>
+                <div class="row">
+                    <h3>Фото</h3>
+                    <span>Выберите Титульное изображение</span><br>
+                    <div>
+    <label></label>
+    <input type="file" class="gold-btn-bck" id="title_file" name="title_file"
+          accept=".jpg, .jpeg, .png">
+  </div>
+                </div>
+                <div class="row">
+                    <span>Выберите до 10 фотографий  (через клавишу Ctrl или выделите изображения)</span><br>
+                    <div>
+    <label></label>
+    <input type="file" class="gold-btn-bck" id="files" name="files"
+          accept=".jpg, .jpeg, .png" multiple>
+  </div>
+                </div>
+                <input type="submit" data-bs-toggle="tooltip">
+            </form>
+        </div>
+
+
+    </div>
+</main>
+
+
+<script>
+    telExp = /^(\+375)?\s?\(?\d{2}\)? ?\d{3}\-?\d{2}\-?\d{2}$/;
+    codeExp = /^(\+375)?\s?\(?\d{2}$/
+    code1Exp = /^(\+375)\s\(/;
+    code2Exp = /^(\+375)?\s?\(?\d{2}\)? ?\d{3}$/;
+    code3Exp = /^(\+375)?\s?\(?\d{2}\)? ?\d{3}\-?\d{2}$/;
+    telInput = document.getElementById("tel_Input");
+
+
+    telInput.onclick = function () {
+        if (telInput.value === '') telInput.value = '+375 (';
+    };
+
+
+    telInput.onblur = function () {
+        if (this.value === '+375 (') this.value = '';
+        else if (!code1Exp.test(telInput.value))
+            telInput.value = "";
+        else if (telExp.test(telInput.value)) {
+            telInput.style.borderColor = "green";
+            telInput.style.backgroundColor = "white";
+        }
+    };
+
+
+    telInput.oninput = function () {
+        if (codeExp.test(telInput.value))
+            telInput.value += ") ";
+        else if (code2Exp.test(telInput.value) || code3Exp.test(telInput.value))
+            telInput.value += "-";
+    }
+
+
+</script>
+{% endblock %}

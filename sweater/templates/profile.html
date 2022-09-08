@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>D&V</title>
+{% endblock %}
+
+
+{% block body %}
+
+<body>
+<div class="container">
+<div class="py-5 text-center">
+        <h1>Профиль</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-8 text-center p-5 bg-light border rounded-3" style="margin-left: auto; margin-right: auto">
+            <div id="user_avatar">
+                <img src="static/img/default_user.png" style="width: 156px; height: 156px; border-radius: 50%">
+            </div>
+            <h4 style="color: #efaf27">{{ current_user.name }} {{ current_user.surname }}</h4><br>
+            <span style="float: left; font-size: 24px">Дата регистрации</span><span style="float: right; font-size: 24px">{{current_user.created}}</span><hr style="margin-top: 30px"><br>
+            <span style="float: left; font-size: 24px">Номер телефона</span><span style="float: right; font-size: 24px">{{current_user.phone}}</span><hr style="margin-top: 30px"><br>
+            <span style="float: left; font-size: 24px">Электронная почта</span><span style="float: right; font-size: 24px">{{current_user.email}}</span><hr style="margin-top: 30px"><br>
+
+
+
+
+            <a href="{{ url_for('logout') }}">
+            <button class="gold-btn-out" style="padding: 4px 7px">Выйти</button>
+            </a>
+        </div>
+        
+        
+        
+        
+        
+    </div>
+</div>
+</body>
+{% endblock %}

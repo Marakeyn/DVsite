@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="public, max-age=0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!-- Bootstrap CSS (jsDelivr CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='style.css', v=1)}}">
+    {% block title %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <a href="{{ url_for('index') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <h1>D&V</h1>
+        </a>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="{{ url_for('index') }}" class="nav-link px-2 link-dark" style="font-size: 20px; margin: 0 20px 0 20px"><i class="bi bi-card-heading"></i>Главная</a></li>
+            {% if current_user.is_authenticated %}
+                {% if current_user.has_role('admin') %}
+            <li><a href="create" class="nav-link px-2 link-dark" style="font-size: 20px; margin: 0 20px 0 20px"><i class="bi bi-calendar-plus"></i>Создать объявление</a></li>
+             {% endif %}
+            {% endif %}
+            <li><a href="https://www.google.com/maps/dir//D%26V+Apartment/@53.1445049,29.1948457,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x46d731fb405772b9:0x7527ec926c2b2bb7!2m2!1d29.2312395!2d53.1449888" class="nav-link px-2 link-dark" style="font-size: 20px"><i class="bi bi-pin-map-fill"></i> Показать на карте</a></li>
+
+            <li><a href="tel:+375-44-744-08-05" class="nav-link px-2 link-dark" style="font-size: 20px; margin: 0 20px 0 20px"><i class="bi bi-telephone"></i>Позвонить</a></li>
+            <!--<li><div id="about" ><p class="nav-link px-2 link-dark" style="font-size: 20px">О нас</p></div></li>-->
+            {% if current_user.is_authenticated %}
+                {% if current_user.has_role('admin') %}
+            <li><a href="{{ url_for('admin') }}" class="nav-link px-2 link-dark" style="font-size: 20px; margin: 0 20px 0 20px"><i class="bi bi-unlock-fill"></i>Админ</a></li>
+                {% endif %}
+            {% endif %}
+            {% if not current_user.is_authenticated %}
+          <li><a href="{{ url_for('login_page') }}"> <button type="button" class="btn btn-warning gold-btn-bck">Войти</button></a></li>
+              {% else %}
+             <li><a href="{{ url_for('profile') }}"> <button type="button" class="btn btn-warning gold-btn-bck">Профиль</button></a></li>
+              {% endif %}
+          </ul>
+
+<!--          <div class="col-md-3 text-end">-->
+<!--&lt;!&ndash;          <button type="button" class="btn btn-outline-warning gold-btn-out">Войти</button>&ndash;&gt;-->
+
+<!--          </div>-->
+        </header>
+    </div>
+
+
+    {% block body %}{% endblock %}
+
+<div class="container">
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+          <h1>D&V</h1>
+        <small class="d-block mb-3 text-muted" id="date-site"></small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Текст</h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">текст</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Текст</h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Текст</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Текст</h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Текст</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+    </div>
+    <script src="{{ url_for( 'static', filename='script.js', v=1)}}"></script>
+    <!-- Bootstrap Bundle JS (jsDelivr CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>Вход</title>
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="row align-items-center" style="padding: 100px">
+
+        <div class="col-3 col-md-5 col-lg-3 mx-auto"
+             style="border: 2px gray solid; border-radius: 10px; padding: 20px; box-shadow: 0 5px 5px grey;">
+            <h1>Вход</h1>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-warning" role="alert">
+                <ul class=flashes>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+                <label>Эл. Почта<br>
+                    <input class="input-class" type="email" name="email">
+                </label>
+                <label>Пароль<br>
+                    <input class="input-class" type="password" name="password">
+                </label>
+                <p class="link-secondary text-decoration-none">Если вас нет на сайте - <a href="{{ url_for('register') }}">Зарегестрироваться</a></p>
+                <br> <input class="btn btn-warning gold-btn-bck" type="submit" value="Войти">
+            </form>
+        </div>
+
+    </div>
+{% endblock %}
